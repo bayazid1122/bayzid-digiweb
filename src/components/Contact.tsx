@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send, MessageCircle, Clock, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -14,59 +12,62 @@ const Contact = () => {
     subject: "",
     message: ""
   });
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    
     toast({
       title: "Message Sent Successfully!",
-      description: "Thank you for reaching out. I'll get back to you within 24 hours!",
+      description: "Thank you for reaching out. I'll get back to you within 24 hours!"
     });
-
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
+    });
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-
-  const contactMethods = [
-    {
-      icon: Mail,
-      title: "Email",
-      value: "bayzid@gmail.com",
-      description: "Send me an email anytime",
-      color: "purple"
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      value: "01888369870",
-      description: "Call me during business hours",
-      color: "blue"
-    },
-    {
-      icon: MapPin,
-      title: "Location",
-      value: "Mymensingh, Bangladesh",
-      description: "Available for local meetings",
-      color: "green"
-    }
-  ];
-
-  const quickStats = [
-    { icon: Clock, label: "Response Time", value: "< 24 Hours" },
-    { icon: MessageCircle, label: "Project Discussions", value: "Free" },
-    { icon: Globe, label: "Availability", value: "24/7 Support" }
-  ];
-
-  return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+  const contactMethods = [{
+    icon: Mail,
+    title: "Email",
+    value: "bayzid@gmail.com",
+    description: "Send me an email anytime",
+    color: "purple"
+  }, {
+    icon: Phone,
+    title: "Phone",
+    value: "01888369870",
+    description: "Call me during business hours",
+    color: "blue"
+  }, {
+    icon: MapPin,
+    title: "Location",
+    value: "Mymensingh, Bangladesh",
+    description: "Available for local meetings",
+    color: "green"
+  }];
+  const quickStats = [{
+    icon: Clock,
+    label: "Response Time",
+    value: "< 24 Hours"
+  }, {
+    icon: MessageCircle,
+    label: "Project Discussions",
+    value: "Free"
+  }, {
+    icon: Globe,
+    label: "Availability",
+    value: "24/7 Support"
+  }];
+  return <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-3xl"></div>
@@ -89,15 +90,13 @@ const Contact = () => {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {quickStats.map((stat, index) => (
-            <div key={index} className="text-center p-6 bg-gray-800/30 rounded-2xl backdrop-blur-sm border border-gray-700/30 hover:border-purple-500/30 transition-all duration-300 group">
+          {quickStats.map((stat, index) => <div key={index} className="text-center p-6 bg-gray-800/30 rounded-2xl backdrop-blur-sm border border-gray-700/30 hover:border-purple-500/30 transition-all duration-300 group">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-500/10 rounded-xl mb-4 group-hover:bg-purple-500/20 transition-colors duration-300">
                 <stat.icon className="w-6 h-6 text-purple-400" />
               </div>
               <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
               <div className="text-gray-400 text-sm">{stat.label}</div>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
@@ -113,8 +112,7 @@ const Contact = () => {
             </div>
 
             <div className="space-y-6">
-              {contactMethods.map((method, index) => (
-                <Card key={index} className={`bg-gray-800/40 border-gray-700/50 hover:border-${method.color}-500/30 transition-all duration-500 group backdrop-blur-sm`}>
+              {contactMethods.map((method, index) => <Card key={index} className={`bg-gray-800/40 border-gray-700/50 hover:border-${method.color}-500/30 transition-all duration-500 group backdrop-blur-sm`}>
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
                       <div className={`flex items-center justify-center w-14 h-14 bg-${method.color}-500/10 rounded-2xl group-hover:bg-${method.color}-500/20 transition-all duration-300`}>
@@ -127,8 +125,7 @@ const Contact = () => {
                       </div>
                     </div>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
             </div>
 
             {/* Additional Info */}
@@ -169,31 +166,13 @@ const Contact = () => {
                     <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-3">
                       Full Name *
                     </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="bg-gray-700/50 border-gray-600/50 text-white focus:border-purple-500/50 focus:ring-purple-500/20 h-12 rounded-xl"
-                      placeholder="Your Name"
-                    />
+                    <Input id="name" name="name" type="text" required value={formData.name} onChange={handleChange} className="bg-gray-700/50 border-gray-600/50 text-white focus:border-purple-500/50 focus:ring-purple-500/20 h-12 rounded-xl" placeholder="Your Name" />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-3">
                       Email Address *
                     </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="bg-gray-700/50 border-gray-600/50 text-white focus:border-purple-500/50 focus:ring-purple-500/20 h-12 rounded-xl"
-                      placeholder="your.email@example.com"
-                    />
+                    <Input id="email" name="email" type="email" required value={formData.email} onChange={handleChange} className="bg-gray-700/50 border-gray-600/50 text-white focus:border-purple-500/50 focus:ring-purple-500/20 h-12 rounded-xl" placeholder="your.email@example.com" />
                   </div>
                 </div>
 
@@ -201,39 +180,17 @@ const Contact = () => {
                   <label htmlFor="subject" className="block text-sm font-semibold text-gray-300 mb-3">
                     Project Subject *
                   </label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="bg-gray-700/50 border-gray-600/50 text-white focus:border-purple-500/50 focus:ring-purple-500/20 h-12 rounded-xl"
-                    placeholder="What's your project about?"
-                  />
+                  <Input id="subject" name="subject" type="text" required value={formData.subject} onChange={handleChange} className="bg-gray-700/50 border-gray-600/50 text-white focus:border-purple-500/50 focus:ring-purple-500/20 h-12 rounded-xl" placeholder="What's your project about?" />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-3">
                     Project Details *
                   </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="bg-gray-700/50 border-gray-600/50 text-white focus:border-purple-500/50 focus:ring-purple-500/20 resize-none rounded-xl"
-                    placeholder="Tell me about your project requirements, timeline, and budget..."
-                  />
+                  <Textarea id="message" name="message" required rows={6} value={formData.message} onChange={handleChange} className="bg-gray-700/50 border-gray-600/50 text-white focus:border-purple-500/50 focus:ring-purple-500/20 resize-none rounded-xl" placeholder="Tell me about your project requirements, timeline, and budget..." />
                 </div>
 
-                <Button 
-                  type="submit" 
-                  size="lg"
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
-                >
+                <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25">
                   Send Message
                   <Send className="ml-3 h-5 w-5" />
                 </Button>
@@ -248,13 +205,9 @@ const Contact = () => {
             <h5 className="text-2xl font-bold text-white mb-2">Bayzid Bostami Muaz</h5>
             <p className="text-purple-400 font-medium">Professional Web Designer & Developer</p>
           </div>
-          <p className="text-gray-400">
-            © 2024 All rights reserved. Crafted with passion for digital excellence.
-          </p>
+          <p className="text-gray-400">© 2025 All rights reserved. Crafted with passion for digital excellence.</p>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
