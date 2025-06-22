@@ -50,19 +50,21 @@ const Hero = () => {
 
       <div className="container mx-auto relative z-10">
         <div className="text-center space-y-12">
-          {/* Modern Profile Section */}
+          {/* Modern Profile Section with Image */}
           <div className="relative mx-auto w-56 h-56 group">
             {/* Outer Glow Ring */}
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full blur-2xl opacity-50 group-hover:opacity-75 animate-pulse transition-all duration-700"></div>
             
             {/* Main Profile Container */}
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/5 backdrop-blur-xl shadow-2xl transform transition-all duration-700 group-hover:scale-105 group-hover:border-white/10">
-              <div className="w-full h-full bg-gradient-to-br from-purple-600 via-pink-600 to-blue-600 flex items-center justify-center relative">
-                <span className="text-8xl font-bold text-white drop-shadow-2xl">BM</span>
-                
-                {/* Subtle Inner Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
+              <img 
+                src="https://i.postimg.cc/5tjNVVWx/Social-Media-Profile.jpg" 
+                alt="Bayzid - Professional Web Designer & Developer"
+                className="w-full h-full object-cover"
+              />
+              
+              {/* Subtle Inner Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
             
             {/* Multiple Rotating Rings */}
